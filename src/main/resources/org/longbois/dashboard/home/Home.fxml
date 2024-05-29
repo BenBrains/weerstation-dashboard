@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1380.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.longbois.dashboard.home.HomeController">
+   <left>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0" spacing="8.0" stylesheets="@Home.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="sidebarDashboard" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/icons/layout-dashboard.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Dashboard">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="sidebarWeather" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/icons/cloud.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Weather">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="sidebarDataTable" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/icons/table.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Data Table">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="sidebarSettings" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/icons/settings.png" />
+                     </image>
+                  </ImageView>
+                  <Label text="Settings">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+            <Pane prefHeight="200.0" prefWidth="250.0" />
+            <ComboBox fx:id="sidebarCombo" prefHeight="26.0" prefWidth="222.0" promptText="Station Selector" styleClass="station-selector" />
+            <HBox fx:id="sidebarSettings1" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Circle fx:id="statusCircle" fill="#1fff29" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Label fx:id="statusText" text="Online">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+            </HBox>
+         </children>
+         <styleClass>
+            <String fx:value="bg-base-100" />
+            <String fx:value="right-side-border" />
+         </styleClass>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="bg-primary" stylesheets="@Home.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="bg-base-100" stylesheets="@Home.css">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../images/icons/bell.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Label text="Dashboard">
+               <padding>
+                  <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="660.0" prefWidth="1065.0">
+               <children>
+                  <VBox prefHeight="660.0" prefWidth="880.0">
+                     <children>
+                        <Label text="Temperature">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets left="16.0" />
+                           </VBox.margin>
+                        </Label>
+                        <LineChart fx:id="tempGraph" legendSide="RIGHT" prefHeight="300.0" prefWidth="766.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <Label text="Humidity">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets left="16.0" />
+                           </VBox.margin>
+                        </Label>
+                        <LineChart fx:id="humidityGraph" prefHeight="300.0" prefWidth="766.0">
+                           <xAxis>
+                              <CategoryAxis side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis side="LEFT" />
+                           </yAxis>
+                        </LineChart>
+                     </children></VBox>
+                  <VBox styleClass="bg-details-pane" stylesheets="@Home.css">
+                     <children>
+                        <Label text="Station">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="panelName" text="Wietplantage">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="15.0" prefWidth="234.0" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/icons/map-pin.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="panelLocation" text="Noord">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/icons/battery.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="panelBattery" text="80%">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/icons/locate-fixed.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="panelLatLon" text="44.4748113    -67.5420128,15.56">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/icons/hardware-version.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="panelHardwareVersion" text="v1.3">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                           <children>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../../images/icons/software-version.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="panelSoftwareVersion" text="v2.1">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="8.0" right="8.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

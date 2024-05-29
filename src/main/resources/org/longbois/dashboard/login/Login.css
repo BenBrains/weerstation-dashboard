@@ -1,0 +1,5 @@
+/* A background gradient for the login page */
+/* The gradient is a linear gradient that goes from the top to the bottom of the page */
+.login-pane {
+    -fx-background-color: linear-gradient(to bottom right, #d2f6fc, #f3deff);
+}
