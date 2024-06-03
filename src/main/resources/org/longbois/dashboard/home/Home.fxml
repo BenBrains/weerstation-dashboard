@@ -2,13 +2,12 @@
 
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -88,7 +87,7 @@
                   <Insets left="20.0" right="20.0" />
                </padding>
             </HBox>
-            <Pane prefHeight="200.0" prefWidth="250.0" />
+            <Pane prefHeight="197.0" prefWidth="250.0" />
             <ComboBox fx:id="sidebarCombo" prefHeight="26.0" prefWidth="222.0" promptText="Station Selector" styleClass="station-selector" />
             <HBox fx:id="sidebarSettings1" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
                <children>
@@ -134,50 +133,18 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <HBox prefHeight="660.0" prefWidth="1065.0">
+            <HBox prefWidth="1065.0">
                <children>
-                  <VBox prefHeight="660.0" prefWidth="880.0">
-                     <children>
-                        <Label text="Temperature">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets left="16.0" />
-                           </VBox.margin>
-                        </Label>
-                        <LineChart fx:id="tempGraph" legendSide="RIGHT" prefHeight="300.0" prefWidth="766.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </LineChart>
-                        <Label text="Humidity">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets left="16.0" />
-                           </VBox.margin>
-                        </Label>
-                        <LineChart fx:id="humidityGraph" prefHeight="300.0" prefWidth="766.0">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </LineChart>
-                     </children></VBox>
-                  <VBox styleClass="bg-details-pane" stylesheets="@Home.css">
+                  <ScrollPane hbarPolicy="NEVER">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="803.0">
+                           <children>
+                              <VBox fx:id="graphContainer" prefWidth="786.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+                  <VBox prefHeight="628.0" prefWidth="301.0" styleClass="bg-details-pane" stylesheets="@Home.css">
                      <children>
                         <Label text="Station">
                            <font>
@@ -224,14 +191,14 @@
                               <Insets left="8.0" right="8.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="8.0">
+                        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="262.0" spacing="8.0">
                            <children>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../../images/icons/locate-fixed.png" />
                                  </image>
                               </ImageView>
-                              <Label fx:id="panelLatLon" text="44.4748113    -67.5420128,15.56">
+                              <Label fx:id="panelLatLon" text="44.4748113, -67.5420128,15.56">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

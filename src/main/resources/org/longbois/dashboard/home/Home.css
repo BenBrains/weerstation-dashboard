@@ -34,3 +34,50 @@
     -fx-background-radius: 0;
     -fx-border-radius: 4;
 }
+
+.chart-series-line {
+    -fx-stroke: #0000ff; /* Change the color of the line */
+    -fx-stroke-width: 2px; /* Change the width of the line */
+}
+
+.chart-line-symbol {
+    -fx-background-color: #0000ff, white; /* The first color is the fill, the second color is the border */
+    -fx-background-insets: 0, 2; /* This is used to create a border around the dot */
+    -fx-background-radius: 4px; /* This makes the dot round */
+    -fx-padding: 4px; /* This controls the size of the dot */
+}
+
+.chart-line-symbol:hover {
+    -fx-background-color: purple, pink; /* The first color is the fill, the second color is the border */
+    -fx-background-insets: 0, 2; /* This is used to create a border around the dot */
+    -fx-background-radius: 4px; /* This makes the dot round */
+    -fx-padding: 4px; /* This controls the size of the dot */
+}
+
+.chart-series-area {
+    -fx-fill: #0000ff; /* Change the color of the area */
+    -fx-stroke: #0000ff; /* Change the color of the line */
+    -fx-stroke-width: 2px; /* Change the width of the line */
+}
+
+/* Scroll Pane */
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: white;
+}
+
+.scroll-bar:vertical .increment-button,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+}

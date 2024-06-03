@@ -2,15 +2,20 @@ package org.longbois.dashboard.home;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.geometry.Side;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,11 +23,16 @@ import org.longbois.dashboard.ApiService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeController {
 
+    private List<LineChart<String, Number>> charts = new ArrayList<>();
+
+
     @FXML
-    private LineChart<?, ?> humidityGraph;
+    private VBox graphContainer;
 
     @FXML
     private Label panelBattery;
@@ -63,10 +73,7 @@ public class HomeController {
     @FXML
     private ComboBox<String> sidebarCombo;
 
-    @FXML
-    private LineChart<String, Number> tempGraph;
-
-    final ApiService apiService;
+    private final ApiService apiService;
 
     public HomeController() {
         this.apiService = new ApiService();
@@ -75,10 +82,6 @@ public class HomeController {
     public void initialize() {
 
         startHealthCheck();
-
-        tempGraph.setLegendVisible(false);
-//        tempGraph.getXAxis().setLabel("Time");
-//        tempGraph.getYAxis().setLabel("Temperature");
 
         try {
             // Init first station
@@ -100,22 +103,26 @@ public class HomeController {
 
             setCombobox(stations, firstStation);
             setPanelInfo(firstStation);
-            addTemperatureData();
-
+            addGraphsToContainer(firstStation.getInt("id"));
         } catch (Exception e) {
             System.out.println("API - Error while fetching data");
             e.printStackTrace();
         }
     }
 
-    private void addTemperatureData() {
-        String sensorId = "1";
-        JSONObject response = apiService.fetchData("http://bweerd.gcmsi.nl/api/sensors/1/between?start=2022-01-01&end=2024-12-31");
-        JSONObject data = response.getJSONObject("data");
-        JSONArray datapoints = data.getJSONArray("datapoints");
+    private LineChart<String, Number> createChart(String title, JSONArray datapoints) {
+        CategoryAxis xAxis = new CategoryAxis();
+        NumberAxis yAxis = new NumberAxis();
+        LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
+        lineChart.setPrefHeight(300);
+        lineChart.setLegendVisible(false);
+
+        xAxis.setTickLabelFont(new Font("Comic Sans MS", 12));
+        yAxis.setTickLabelFont(new Font("Comic Sans MS", 12));
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Temperature");
+        series.setName(title);
+
         for (int i = 0; i < datapoints.length(); i++) {
             JSONObject datapoint = datapoints.getJSONObject(i);
             String timestamp = datapoint.getString("timestamp");
@@ -124,12 +131,36 @@ public class HomeController {
             LocalDateTime dateTime = LocalDateTime.parse(timestamp, inputFormatter);
             String formattedTimestamp = dateTime.format(outputFormatter);
             double value = datapoint.getDouble("value");
-
             series.getData().add(new XYChart.Data<>(formattedTimestamp, value));
+
         }
+        lineChart.getData().add(series);
+        return lineChart;
+    }
 
-        tempGraph.getData().add(series);
+    public void addGraphsToContainer(int stationId) {
+        JSONObject response = apiService.fetchData("http://bweerd.gcmsi.nl/api/sensors");
+        assert response != null;
+        JSONArray sensors = response.getJSONArray("data");
 
+        for (int i = 0; i < sensors.length(); i++) {
+            JSONObject sensor = sensors.getJSONObject(i);
+            if (sensor.getInt("station_id") == stationId) {
+                JSONObject sensorResponse = apiService.fetchData("http://bweerd.gcmsi.nl/api/sensors/" + String.valueOf(sensor.getInt("id")) + "/between?start=2022-01-01&end=2024-12-31");
+                assert sensorResponse != null;
+                JSONObject sensorData = sensorResponse.getJSONObject("data");
+
+                // Print the sensor data for debugging
+                System.out.println("Sensor data: " + sensorData.toString());
+
+                Platform.runLater(() -> {
+                    LineChart<String, Number> chart = createChart(sensorData.getString("name"), sensorData.getJSONArray("datapoints"));
+                    charts.add(chart);
+                    graphContainer.getChildren().add(chart);
+
+                });
+            }
+        }
     }
 
     private void setCombobox(JSONArray stations, JSONObject firstStation) {

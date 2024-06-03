@@ -8,6 +8,7 @@ module org.longbois.dashboard {
     requires org.kordamp.ikonli.javafx;
     requires java.net.http;
     requires org.json;
+    requires jdk.jfr;
 
     opens org.longbois.dashboard.login to javafx.fxml;
     opens org.longbois.dashboard.home to javafx.fxml;
