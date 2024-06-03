@@ -18,7 +18,7 @@
     -fx-border-width: 1px;
     -fx-border-color: '#6F6F6F';
 }
-
+/* Sidebar */
 .status-circle--online {
     -fx-background-color: '#00FF00';
 }
@@ -35,6 +35,11 @@
     -fx-border-radius: 4;
 }
 
+.sidebar-btn:hover {
+    -fx-background-color: '#EFF2F6';
+}
+
+/* Charts */
 .chart-series-line {
     -fx-stroke: #0000ff; /* Change the color of the line */
     -fx-stroke-width: 2px; /* Change the width of the line */
