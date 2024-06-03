@@ -19,6 +19,11 @@
    <left>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="250.0" spacing="8.0" stylesheets="@Home.css" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fitHeight="96.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/icons/lb-logo.png" />
+               </image>
+            </ImageView>
             <HBox fx:id="sidebarDashboard" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
