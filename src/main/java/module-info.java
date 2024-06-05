@@ -10,7 +10,13 @@ module org.longbois.dashboard {
     requires org.json;
     requires jdk.jfr;
 
+    opens org.longbois.dashboard to javafx.fxml;
+    opens org.longbois.dashboard.components to javafx.fxml;
     opens org.longbois.dashboard.login to javafx.fxml;
     opens org.longbois.dashboard.home to javafx.fxml;
+    opens org.longbois.dashboard.sensors to javafx.fxml;
+
     exports org.longbois.dashboard;
+    exports org.longbois.dashboard.components;
+    exports org.longbois.dashboard.sensors;
 }

@@ -28,7 +28,7 @@ public class LoginController {
                 Stage stage = (Stage) apiKeyInput.getScene().getWindow();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/longbois/dashboard/home/Home.fxml"));
                 Parent homeParent = loader.load();
-                Scene  homeScene = new Scene(homeParent, 1380, 810);
+                Scene  homeScene = new Scene(homeParent, 1380, 780);
                 stage.setScene(homeScene);
             } catch (IOException e) {
                 e.printStackTrace();

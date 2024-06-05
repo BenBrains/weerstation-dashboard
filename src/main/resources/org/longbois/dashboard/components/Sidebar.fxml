@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefWidth="250.0" spacing="8.0" stylesheets="@../home/Home.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.longbois.dashboard.components.SidebarController">
+   <children>
+      <ImageView fitHeight="96.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../images/icons/lb-logo.png" />
+         </image>
+      </ImageView>
+      <HBox fx:id="sidebarDashboard" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/icons/layout-dashboard.png" />
+               </image>
+            </ImageView>
+            <Label text="Dashboard">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="sidebarDataTable" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/icons/table.png" />
+               </image>
+            </ImageView>
+            <Label text="Sensors">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="sidebarWeather" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/icons/cloud.png" />
+               </image>
+            </ImageView>
+            <Label text="Weather">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+      <HBox fx:id="sidebarSettings" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+         <children>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../images/icons/settings.png" />
+               </image>
+            </ImageView>
+            <Label text="Settings">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <ComboBox fx:id="sidebarCombo" prefHeight="26.0" prefWidth="222.0" promptText="Station Selector" styleClass="station-selector" />
+      <HBox fx:id="sidebarSettings1" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Circle fx:id="statusCircle" fill="#1fff29" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="statusText" text="Online">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <VBox.margin>
+            <Insets bottom="16.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+   <styleClass>
+      <String fx:value="bg-base-100" />
+      <String fx:value="right-side-border" />
+   </styleClass>
+</VBox>
