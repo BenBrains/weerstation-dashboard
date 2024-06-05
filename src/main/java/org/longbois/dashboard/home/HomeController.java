@@ -1,9 +1,5 @@
 package org.longbois.dashboard.home;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.PauseTransition;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,16 +7,12 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.longbois.dashboard.ApiService;
+import org.longbois.dashboard.services.ApiService;
 import org.longbois.dashboard.components.PanelController;
 
 import java.io.IOException;
@@ -65,8 +57,6 @@ public class HomeController {
     public void initialize() {
 
         try {
-            // Init first station
-            System.out.println("API - Fetching first station");
             JSONObject stationData = apiService.fetchData("http://bweerd.gcmsi.nl/api/stations");
             if (stationData == null) {
                 System.out.println("API - Error while fetching data");
@@ -146,9 +136,6 @@ public class HomeController {
                 JSONObject sensorResponse = apiService.fetchData("http://bweerd.gcmsi.nl/api/sensors/" + String.valueOf(sensor.getInt("id")) + "/between?start=2022-01-01&end=2024-12-31");
                 assert sensorResponse != null;
                 JSONObject sensorData = sensorResponse.getJSONObject("data");
-
-                // Print the sensor data for debugging
-                System.out.println("Sensor data: " + sensorData.toString());
 
                 Platform.runLater(() -> {
                     LineChart<String, Number> chart = createChart(sensorData.getString("name"), sensorData.getJSONArray("datapoints"));

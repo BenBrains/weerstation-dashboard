@@ -36,7 +36,7 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </HBox>
-      <HBox fx:id="sidebarDataTable" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
+      <HBox fx:id="sidebarSensors" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0" styleClass="sidebar-btn">
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

@@ -19,4 +19,6 @@ module org.longbois.dashboard {
     exports org.longbois.dashboard;
     exports org.longbois.dashboard.components;
     exports org.longbois.dashboard.sensors;
+    exports org.longbois.dashboard.services;
+    opens org.longbois.dashboard.services to javafx.fxml;
 }

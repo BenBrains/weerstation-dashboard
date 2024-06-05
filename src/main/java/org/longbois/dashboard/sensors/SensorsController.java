@@ -5,12 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.longbois.dashboard.ApiService;
-import org.longbois.dashboard.components.PanelController;
+import org.longbois.dashboard.services.ApiService;
 
 public class SensorsController {
 
@@ -67,6 +68,15 @@ public class SensorsController {
             stationId.setCellValueFactory(new PropertyValueFactory<>("stationId"));
 
             sensorsTable.setItems(sensorList);
+            sensorsTable.setRowFactory(tv -> {
+                TableRow<Sensor> row = new TableRow<>();
+                row.addEventFilter(MouseEvent.MOUSE_PRESSED, event -> {
+                    if (!row.isEmpty()) {
+                        event.consume();
+                    }
+                });
+                return row;
+            });
 
         } catch (Exception e) {
             System.out.println("API - Error while fetching data");

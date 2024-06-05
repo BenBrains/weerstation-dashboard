@@ -1,4 +1,4 @@
-package org.longbois.dashboard;
+package org.longbois.dashboard.services;
 
 import org.json.JSONObject;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class ApiService {
             Properties prop = new Properties();
 
             if (input == null) {
-                System.out.println("Sorry, unable to find config.properties");
+                System.out.println("Init - Unable to find config.properties");
                 return;
             }
 

@@ -29,7 +29,6 @@ public class PanelController {
     }
 
     public void setPanelInfo(JSONObject station) {
-        System.out.println("Station: " + station.toString());
         try {
             System.out.printf("Setting panel info for station %s%n", station.getString("name"));
             double lat = station.optDouble("lat", Double.NaN);
@@ -44,11 +43,11 @@ public class PanelController {
                 panelSoftwareVersion.setText(station.getString("software_version"));
                 panelHardwareVersion.setText(station.getString("hardware_version"));
 
-                System.out.println("Panel Name: " + panelName.getText());
-                System.out.println("Panel Location: " + panelLocation.getText());
-                System.out.println("Panel LatLon: " + panelLatLon.getText());
-                System.out.println("Panel Software Version: " + panelSoftwareVersion.getText());
-                System.out.println("Panel Hardware Version: " + panelHardwareVersion.getText());
+//                System.out.println("Panel Name: " + panelName.getText());
+//                System.out.println("Panel Location: " + panelLocation.getText());
+//                System.out.println("Panel LatLon: " + panelLatLon.getText());
+//                System.out.println("Panel Software Version: " + panelSoftwareVersion.getText());
+//                System.out.println("Panel Hardware Version: " + panelHardwareVersion.getText());
 
                 panelName.getParent().requestLayout();
 

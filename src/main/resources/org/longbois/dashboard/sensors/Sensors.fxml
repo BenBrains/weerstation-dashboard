@@ -61,14 +61,14 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0">
                                  <children>
-                                    <TableView fx:id="sensorsTable" layoutX="15.0" prefHeight="400.0" prefWidth="809.0">
+                                    <TableView fx:id="sensorsTable" layoutX="15.0" prefHeight="400.0" prefWidth="772.0" styleClass="sensors-table">
                                       <columns>
                                         <TableColumn fx:id="sensorId" prefWidth="75.0" text="ID" />
                                         <TableColumn fx:id="stationId" prefWidth="75.0" text="Station" />
-                                          <TableColumn fx:id="sensorName" prefWidth="75.0" text="Name" />
-                                          <TableColumn fx:id="sensorDepth" prefWidth="75.0" text="Depth" />
-                                          <TableColumn fx:id="sensorType" prefWidth="203.99990844726562" text="Type" />
-                                          <TableColumn fx:id="sensorUnit" prefWidth="172.79998779296875" text="Unit" />
+                                          <TableColumn fx:id="sensorName" prefWidth="188.0000457763672" text="Name" />
+                                          <TableColumn fx:id="sensorDepth" minWidth="0.0" prefWidth="129.5999755859375" text="Depth (meter)" />
+                                          <TableColumn fx:id="sensorType" prefWidth="194.39999389648438" text="Type" />
+                                          <TableColumn fx:id="sensorUnit" prefWidth="95.20001220703125" text="Unit" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
