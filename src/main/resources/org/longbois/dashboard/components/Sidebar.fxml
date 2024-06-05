@@ -40,7 +40,7 @@
          <children>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../images/icons/table.png" />
+                  <Image url="@../../../../images/icons/sensor.png" />
                </image>
             </ImageView>
             <Label text="Sensors">
