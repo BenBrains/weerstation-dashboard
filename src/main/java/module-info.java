@@ -15,10 +15,12 @@ module org.longbois.dashboard {
     opens org.longbois.dashboard.login to javafx.fxml;
     opens org.longbois.dashboard.home to javafx.fxml;
     opens org.longbois.dashboard.sensors to javafx.fxml;
+    opens org.longbois.dashboard.newSensor to javafx.fxml;
 
     exports org.longbois.dashboard;
     exports org.longbois.dashboard.components;
     exports org.longbois.dashboard.sensors;
+    exports org.longbois.dashboard.newSensor;
     exports org.longbois.dashboard.services;
     opens org.longbois.dashboard.services to javafx.fxml;
 }

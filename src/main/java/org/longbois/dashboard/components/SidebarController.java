@@ -9,12 +9,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.longbois.dashboard.factories.ControllerFactory;
 import org.longbois.dashboard.services.ApiService;
 import org.longbois.dashboard.services.HealthCheckService;
 
@@ -56,6 +58,8 @@ public class SidebarController {
     }
 
     public void initialize() {
+        ControllerFactory.addController(SidebarController.class, this);
+
         HealthCheckService.getInstance(statusCircle, statusText).startHealthCheck();
 
         // Navigation
@@ -84,14 +88,13 @@ public class SidebarController {
     }
 
     private void setCombobox(JSONArray stations, JSONObject firstStation) {
-        // Set prompt text
-        sidebarCombo.setPromptText(firstStation.getString("name"));
-
         // Set combo box items
         for (int i = 0; i < stations.length(); i++) {
             JSONObject station = stations.getJSONObject(i);
             sidebarCombo.getItems().add(station.getString("name"));
         }
+
+        sidebarCombo.getSelectionModel().selectFirst();
 
         // Listen for combo box changes
         sidebarCombo.setOnAction(event -> {
@@ -140,4 +143,13 @@ public class SidebarController {
             throw new RuntimeException(e);
         }
    }
+
+    // Stuff for export, this whole codebase is a frikkin mess. Or I am just too dumb to understand it.
+    public String getSelectedStation() {
+        if (sidebarCombo.getSelectionModel().isEmpty()) {
+            return null;
+        }
+
+        return sidebarCombo.getSelectionModel().getSelectedItem();
+    }
 }

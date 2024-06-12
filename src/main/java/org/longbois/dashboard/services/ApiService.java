@@ -1,6 +1,7 @@
 package org.longbois.dashboard.services;
 
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -36,6 +37,25 @@ public class ApiService {
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).header("API_KEY", apiKey).build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            return new JSONObject(response.body());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JSONObject postData(String apiUrl, String data) {
+        // Log received data
+        System.out.println("API - Posting data: " + data);
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(apiUrl))
+                    .header("API_KEY", apiKey)
+                    .POST(HttpRequest.BodyPublishers.ofString(data))
+                    .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
             return new JSONObject(response.body());

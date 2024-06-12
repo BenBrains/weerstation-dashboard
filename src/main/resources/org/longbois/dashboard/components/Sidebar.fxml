@@ -87,7 +87,10 @@
             <Insets left="20.0" right="20.0" />
          </padding>
       </HBox>
-      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin></Pane>
       <ComboBox fx:id="sidebarCombo" prefHeight="26.0" prefWidth="222.0" promptText="Station Selector" styleClass="station-selector" />
       <HBox fx:id="sidebarSettings1" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
          <children>

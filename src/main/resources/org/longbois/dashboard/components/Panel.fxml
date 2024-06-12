@@ -107,7 +107,10 @@
             <Insets left="8.0" right="8.0" />
          </padding>
       </HBox>
-      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+      <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <VBox.margin>
+            <Insets bottom="-8.0" />
+         </VBox.margin></Pane>
    </children>
    <padding>
       <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />

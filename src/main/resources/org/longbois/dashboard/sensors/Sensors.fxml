@@ -6,8 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -22,19 +20,6 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" styleClass="bg-primary" stylesheets="@Sensors.css" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="55.0" prefWidth="200.0" styleClass="bg-base-100" stylesheets="@Sensors.css">
-               <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../images/icons/bell.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets right="20.0" />
-                     </HBox.margin>
-                  </ImageView>
-               </children>
-            </HBox>
             <HBox>
                <children>
                   <VBox>
@@ -56,6 +41,9 @@
                                  </HBox.margin>
                               </Button>
                            </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
                         </HBox>
                         <ScrollPane hbarPolicy="NEVER">
                           <content>
@@ -85,7 +73,7 @@
                         <fx:include source="../components/Panel.fxml" />
                      </children>
                      <HBox.margin>
-                        <Insets left="16.0" right="16.0" top="60.0" />
+                        <Insets left="16.0" right="16.0" top="90.0" />
                      </HBox.margin>
                   </AnchorPane>
                </children>
