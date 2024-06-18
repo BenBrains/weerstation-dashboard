@@ -81,7 +81,7 @@ public class NewSensorController {
 
         System.out.println("JSONObject" + sensorData);
 //        String jsonObject = "{\"name\":\"" + sensorName + "\",\"depth\":" + sensorDepth + ",\"type\":\"" + sensorType.toLowerCase() + "\",\"unit\":\"" + sensorUnit + "\",\"station_id\":1}";
-        JSONObject response = apiService.postData("http://bweerd.gcmsi.nl/api/sensors", jsonObject);
+        JSONObject response = apiService.postData("http://bweerd.gcmsi.nl/api/sensors", String.valueOf(sensorData));
         if (response == null) {
             System.out.println("API - Error while posting data");
             return;
