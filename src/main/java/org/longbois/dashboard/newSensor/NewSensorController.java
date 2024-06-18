@@ -72,16 +72,16 @@ public class NewSensorController {
         System.out.println("Selected station: " + selectedStation);
 
 //        Create a JSON object with the sensor data and post it to the API
-        JSONObject sensorData = new JSONObject();
-        sensorData.put("name", sensorName);
-        sensorData.put("depth", sensorDepth);
-        sensorData.put("type", sensorType.toLowerCase());
-        sensorData.put("unit", sensorUnit);
-        sensorData.put("station_id", 1);
+//        JSONObject sensorData = new JSONObject();
+//        sensorData.put("name", sensorName);
+//        sensorData.put("depth", sensorDepth);
+//        sensorData.put("type", sensorType.toLowerCase());
+//        sensorData.put("unit", sensorUnit);
+//        sensorData.put("stationId", 1);
 
-        System.out.println(sensorData);
-
-        JSONObject response = apiService.postData("http://bweerd.gcmsi.nl/api/sensors", sensorData.toString());
+//        System.out.println("JSONObject" + sensorData);
+        String jsonObject = "{\"name\":\"" + sensorName + "\",\"depth\":" + sensorDepth + ",\"type\":\"" + sensorType.toLowerCase() + "\",\"unit\":\"" + sensorUnit + "\",\"station_id\":1}";
+        JSONObject response = apiService.postData("http://bweerd.gcmsi.nl/api/sensors", jsonObject);
         if (response == null) {
             System.out.println("API - Error while posting data");
             return;

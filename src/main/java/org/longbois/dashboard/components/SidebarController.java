@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.longbois.dashboard.factories.ControllerFactory;
+import org.longbois.dashboard.home.HomeController;
 import org.longbois.dashboard.services.ApiService;
 import org.longbois.dashboard.services.HealthCheckService;
 
@@ -51,10 +52,12 @@ public class SidebarController {
 
     private final ApiService apiService;
     private final PanelController panelController;
+    private HomeController homeController;
 
     public SidebarController() {
         this.apiService = new ApiService();
         this.panelController = loadPanelController();
+        this.homeController = ControllerFactory.getController(HomeController.class);
     }
 
     public void initialize() {
@@ -65,8 +68,6 @@ public class SidebarController {
         // Navigation
         setNavigation(sidebarDashboard, "/org/longbois/dashboard/home/Home.fxml");
         setNavigation(sidebarSensors, "/org/longbois/dashboard/sensors/Sensors.fxml");
-        setNavigation(sidebarSettings, "/org/longbois/dashboard/settings/Settings.fxml");
-        setNavigation(sidebarWeather, "/org/longbois/dashboard/weather/Weather.fxml");
 
         // Init first station
         System.out.println("API - Fetching first station");
@@ -98,12 +99,18 @@ public class SidebarController {
 
         // Listen for combo box changes
         sidebarCombo.setOnAction(event -> {
+            HomeController homeController = ControllerFactory.getController(HomeController.class);
             String selectedStation = sidebarCombo.getSelectionModel().getSelectedItem();
             System.out.println("Selected station: " + selectedStation);
             for (int i = 0; i < stations.length(); i++) {
                 JSONObject station = stations.getJSONObject(i);
                 if (station.getString("name").equals(selectedStation)) {
                     panelController.setPanelInfo(station);
+                    if (homeController != null) {
+                        homeController.refreshGraphs(station.getInt("id"));
+                    } else {
+                        System.out.println("HomeController is null");
+                    }
                 }
             }
         });
@@ -121,11 +128,11 @@ public class SidebarController {
         }
     }
 
-   private void setNavigation(HBox hbox, String fxmlPath) {
+    private void setNavigation(HBox hbox, String fxmlPath) {
         hbox.setOnMouseClicked(event -> changeScene(fxmlPath));
-   }
+    }
 
-   private void changeScene(String fxmlPath) {
+    private void changeScene(String fxmlPath) {
         try {
             Stage stage = (Stage) sidebarDashboard.getScene().getWindow();
             Scene newScene = sceneCache.get(fxmlPath);
@@ -135,6 +142,7 @@ public class SidebarController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
                 Parent newParent = loader.load();
                 newScene = new Scene(newParent);
+                sceneCache.put(fxmlPath, newScene);
             } else {
                 System.out.println("Loading cached scene: " + fxmlPath);
             }
@@ -142,7 +150,7 @@ public class SidebarController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-   }
+    }
 
     // Stuff for export, this whole codebase is a frikkin mess. Or I am just too dumb to understand it.
     public String getSelectedStation() {
